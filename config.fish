@@ -84,3 +84,5 @@ alias js=node
 ## pure-fish configuration
 set --universal pure_symbol_prefix_root_prompt '󱈸󱈸'
 set --universal pure_symbol_git_dirty '   '
+source ~/.config/fish/functions/_env.fish
+

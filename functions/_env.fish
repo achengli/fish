@@ -2,7 +2,7 @@
 
 function _env-append-to-path
     for arg in $argv
-        set -xg PATH $PATH:$arg
+        set PATH "$PATH:$arg"
     end
 end
 
@@ -13,4 +13,4 @@ set -xg QT_QPA_PLATFORM wayland
 set -xg LUA_INIT "@$HOME/.config/rc.lua"
 
 eval (luarocks path | sed 's/export/set -xg/' | sed 's/=/ /')
-
+_env-append-to-path $HOME/.luarocks/bin/

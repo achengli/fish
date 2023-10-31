@@ -12,5 +12,15 @@ set -xg PYTHONSTARTUP /home/tao/.config/pythonrc
 set -xg QT_QPA_PLATFORM wayland
 set -xg LUA_INIT "@$HOME/.config/rc.lua"
 
-eval (luarocks path | sed 's/export/set -xg/' | sed 's/=/ /')
 _env-append-to-path $HOME/.luarocks/bin/
+
+set --global GTK_THEME "Adwaita:dark"
+
+eval "$(luarocks --lua-version=5.4 path)"
+
+alias _lua54='eval "$(luarocks --lua-version=5.4 path)"'
+alias _lua=_lua54
+alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
+alias _lua51='eval "$(luarocks --lua-version=5.1 path)"'
+
+_env-append-to-path $HOME/.local/share/lua-language-server/bin

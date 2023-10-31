@@ -6,8 +6,8 @@
 bind \b backward-kill-word
 
 if test (uname -s) = 'Linux'; and test -f '/usr/bin/exa'
-    alias ls 'ls --color=auto'
-    alias ll 'exa -lah'
+    alias ls 'exa --icons --color=auto'
+    alias ll 'exa -lah --icons'
     alias grep 'grep --color=auto'
 end
 
@@ -17,7 +17,7 @@ if test -f /usr/bin/rlwrap
 end
 
 if test -d ~/esp
-    alias get_idf ". $HOME/esp/esp-idf/export.sh"
+    alias get_idf ". $HOME/esp/esp-idf/export.fish"
 end
 
 function rms
@@ -73,16 +73,38 @@ function nums
     grep -Eo '([-+]?[0-9]*[\.[0-9]*]?)\.?' | xargs
 end
 
+if test -z $TMUX
+    for k in $(tmux ls | grep -v attached | grep -Eo "^[0-9]+" )
+        tmux kill-session -t $k
+    end
+    if test $TERM = "xterm-kitty"
+        set -g TMUX open
+        tmux new-session
+    end
+end
+
+
 alias reload="source ~/.config/fish/config.fish"
 alias emacs="/usr/bin/emacs -nw"
 alias elisp="/usr/bin/emacs --script"
 alias lisp=ros
 alias cl=cl-repl
-alias vim=nvim
 alias js=node
+alias r=R
+alias rscript=Rscript
+alias vim=/usr/local/bin/nvim
+alias vi=/usr/bin/vim
 
 ## pure-fish configuration
 set --universal pure_symbol_prefix_root_prompt '󱈸󱈸'
 set --universal pure_symbol_git_dirty '   '
 source ~/.config/fish/functions/_env.fish
 
+starship init fish | source
+set -g fish_greeting ''
+alias s="kitty +kitten icat"
+
+set -l __show_fish_logo false
+if test $__show_fish_logo = true
+    _fish_logo
+end

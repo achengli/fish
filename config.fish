@@ -92,8 +92,9 @@ alias cl=cl-repl
 alias js=node
 alias r=R
 alias rscript=Rscript
-alias vim=/usr/local/bin/nvim
+alias vim=/usr/bin/nvim
 alias vi=/usr/bin/vim
+alias octave="octave -q"
 
 ## pure-fish configuration
 set --universal pure_symbol_prefix_root_prompt '󱈸󱈸'

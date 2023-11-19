@@ -25,6 +25,6 @@ alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
 alias _lua51='eval "$(luarocks --lua-version=5.1 path)"'
 
 _env-append-to-path $HOME/.local/share/lua-language-server/bin
-_env-append-to-path $HOME/.local/share/julia-1.9.3/bin
+_env-append-to-path $HOME/.local/share/julia/bin
 _env-append-to-path $HOME/.yarn/bin
 _env-append-to-path $HOME/.cargo/bin

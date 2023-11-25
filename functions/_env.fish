@@ -6,6 +6,12 @@ function _env-append-to-path
     end
 end
 
+function _env-append-to-ldpath
+    for arg in $argv
+        set LD_LIBRARY_PATH "$LD_LIBRARY_PATH:$arg"
+    end
+end
+
 _env-append-to-path $HOME/scripts $HOME/.pokemonsay /usr/local/bin $HOME/.local/bin $HOME/.roswell/bin
 set -xg SDL_VIDEODRIVER wayland
 set -xg PYTHONSTARTUP /home/tao/.config/pythonrc
@@ -28,3 +34,6 @@ _env-append-to-path $HOME/.local/share/lua-language-server/bin
 _env-append-to-path $HOME/.local/share/julia/bin
 _env-append-to-path $HOME/.yarn/bin
 _env-append-to-path $HOME/.cargo/bin
+
+_env-append-to-ldpath /usr/lib
+_env-append-to-ldpath  /usr/lib/octave/8.4.0

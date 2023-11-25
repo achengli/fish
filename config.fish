@@ -99,7 +99,9 @@ alias octave="octave -q"
 ## pure-fish configuration
 set --universal pure_symbol_prefix_root_prompt '󱈸󱈸'
 set --universal pure_symbol_git_dirty '   '
+
 source ~/.config/fish/functions/_env.fish
+_binds
 
 starship init fish | source
 set -g fish_greeting ''

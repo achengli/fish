@@ -4,6 +4,7 @@
 
 # status is-interactive; and return
 bind \b backward-kill-word
+set -g SSH_ENV $HOME/.ssh
 
 if test (uname -s) = 'Linux'; and test -f '/usr/bin/exa'
     alias ls 'exa --icons --color=auto'

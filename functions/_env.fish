@@ -23,12 +23,15 @@ _env-append-to-path $HOME/.luarocks/bin/
 
 set --global GTK_THEME "Adwaita:dark"
 
-eval "$(luarocks --lua-version=5.4 path)"
-
-alias _lua54='eval "$(luarocks --lua-version=5.4 path)"'
-alias _lua=_lua54
-alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
 alias _lua51='eval "$(luarocks --lua-version=5.1 path)"'
+alias _lua54='eval "$(luarocks --lua-version=5.4 path)"'
+alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
+alias _lua=_lua53
+
+alias lua='_lua; and /usr/bin/lua5.3'
+alias lua53='_lua53; and /usr/bin/lua5.3'
+alias lua54='_lua54; and /usr/bin/lua5.4'
+alias lua51='_lua51; and /usr/bin/lua5.1'
 
 _env-append-to-path $HOME/.local/share/lua-language-server/bin
 _env-append-to-path $HOME/.local/share/julia/bin

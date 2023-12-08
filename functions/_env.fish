@@ -39,4 +39,4 @@ _env-append-to-path $HOME/.yarn/bin
 _env-append-to-path $HOME/.cargo/bin
 
 _env-append-to-ldpath /usr/lib
-_env-append-to-ldpath  /usr/lib/octave/8.4.0
+_env-append-to-ldpath /usr/lib/octave/8.4.0

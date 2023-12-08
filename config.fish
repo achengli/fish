@@ -89,7 +89,7 @@ alias reload="source ~/.config/fish/config.fish"
 alias emacs="/usr/bin/emacs -nw"
 alias elisp="/usr/bin/emacs --script"
 alias lisp=ros
-alias cl=cl-repl
+alias cl=clisp
 alias js=node
 alias r=R
 alias rscript=Rscript
@@ -106,7 +106,6 @@ _binds
 
 starship init fish | source
 set -g fish_greeting ''
-alias s="kitty +kitten icat"
 
 set -l __show_fish_logo false
 if test $__show_fish_logo = true

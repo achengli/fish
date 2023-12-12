@@ -7,81 +7,74 @@ bind \b backward-kill-word
 set -g SSH_ENV $HOME/.ssh
 
 if test (uname -s) = 'Linux'; and test -f '/usr/bin/exa'
-    alias ls 'exa --icons --color=auto'
-    alias ll 'exa -lah --icons'
-    alias grep 'grep --color=auto'
+  alias ls 'exa --icons --color=auto'
+  alias ll 'exa -lah --icons'
+  alias grep 'grep --color=auto'
 end
 
 alias clc=clear
 if test -f /usr/bin/rlwrap
-    alias maxima rmaxima
+  alias maxima rmaxima
 end
 
 if test -d ~/esp
-    alias get_idf ". $HOME/esp/esp-idf/export.fish"
+  alias get_idf ". $HOME/esp/esp-idf/export.fish"
 end
 
 function rms
-    if test (read -p 'are you sure to remove it? [y/N]') = 'y'
-        rm -rf $argv
-    end
-end
-        
-function battery
-    set -l bat_cap (acpi -i | grep -Eo '([0-9]+%),' | grep -Eo '[0-9]+')
-    set -l bat_status (acpi -i | grep -Eo ': (\\w+), ' | grep -Eo '\\w+')
-    echo "$bat_cap% - $bat_status"
+  if test (read -p 'are you sure to remove it? [y/N]') = 'y'
+    rm -rf $argv
+  end
 end
 
-#if test -z "$_TMUX_SESSION_ENABLED"
-#if test -z "$TMUX"; and not test "$TERM" = "linux"; or not test "$TERM" = "linux"
-#for session in (tmux ls | grep -Ev attached | cut -d: -f1 | xargs
-#tmux kill-session -t "$session"
-#end
-#tmux
-#end
-#end
+function battery
+  set -l bat_cap (acpi -i | grep -Eo '([0-9]+%),' | grep -Eo '[0-9]+')
+  set -l bat_status (acpi -i | grep -Eo ': (\\w+), ' | grep -Eo '\\w+')
+  echo "$bat_cap% - $bat_status"
+end
 
 function rmx
-    if test "$argv[1]" = "--help"; or test $argv[1] = "-h"
-        printf "Remove executable files\n"
-    else
-        for file in * .*
-            if test -f "$file"; and test -n (ls -l $file | grep -E rwx)
-                rm $file
-            end
-        end
-    end 
+  if test "$argv[1]" = "--help"; or test $argv[1] = "-h"
+    printf "Remove executable files\n"
+  else
+    for file in * .*
+      if test -f "$file"; and test -n (ls -l $file | grep -E rwx)
+        rm $file
+      end
+    end
+  end 
 end
 
 function u
-    if test $argv[1] = "--help"; or test $argv[1] = '-h'
-        echo -e "\e[1musage:\e[m u <hex code>"  
+  if test $argv[1] = "--help"; or test $argv[1] = '-h'
+    echo -e "\e[1musage:\e[m u <hex code>"  
+  else
+    if test (string length $argv[1]) -lt 5
+      printf 'unicode: \u'$argv[1]'\n'
     else
-        if test (string length $argv[1]) -lt 5
-            printf 'unicode: \u'$argv[1]'\n'
-        else
-            printf 'unicode: \U'$argv[1]'\n'
-        end
+      printf 'unicode: \U'$argv[1]'\n'
     end
+  end
 end
 
 function octave-help
-    octave --eval "help $argv"
+  octave --eval "help $argv"
 end
 
 function nums
-    grep -Eo '([-+]?[0-9]*[\.[0-9]*]?)\.?' | xargs
+  grep -Eo '([-+]?[0-9]*[\.[0-9]*]?)\.?' | xargs
 end
 
-if test -z $TMUX
+if test $TERM != 'xterm-256color'
+  if test -z $TMUX
     for k in $(tmux ls | grep -v attached | grep -Eo "^[0-9]+" )
-        tmux kill-session -t $k
+      tmux kill-session -t $k
     end
     if test $TERM = "xterm-kitty"
-        set -g TMUX open
-        tmux new-session
+      set -g TMUX open
+      tmux new-session
     end
+  end
 end
 
 
@@ -109,5 +102,5 @@ set -g fish_greeting ''
 
 set -l __show_fish_logo false
 if test $__show_fish_logo = true
-    _fish_logo
+  _fish_logo
 end

@@ -8,6 +8,8 @@ function __ssh_agent_is_started -d "check if ssh agent is already started"
 	end
 
 	ssh-add -l > /dev/null 2>&1
+  ssh-add $SSH_ENV/windy_clouds > /dev/null 2>&1
+  ssh-add $SSH_ENV/achengli-github > /dev/null 2>&1
 	if test $status -eq 2
 		return 1
 	end

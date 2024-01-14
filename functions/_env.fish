@@ -18,6 +18,7 @@ set -xg PYTHONSTARTUP /home/tao/.config/pythonrc
 set -xg QT_QPA_PLATFORM wayland
 set -xg LUA_INIT "@$HOME/.config/rc.lua"
 set -xg TERM xterm-256color
+export QT_QPA_PLATFORM=wayland
 
 _env-append-to-path $HOME/.luarocks/bin/
 

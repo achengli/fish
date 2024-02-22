@@ -24,20 +24,25 @@ _env-append-to-path $HOME/.luarocks/bin/
 
 set --global GTK_THEME "Adwaita:dark"
 
-alias _lua51='eval "$(luarocks --lua-version=5.1 path)"'
-alias _lua54='eval "$(luarocks --lua-version=5.4 path)"'
-alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
-alias _lua=_lua53
+if false
+  alias _lua51='eval "$(luarocks --lua-version=5.1 path)"'
+  alias _lua54='eval "$(luarocks --lua-version=5.4 path)"'
+  alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
+  alias _lua=_lua53
 
-alias lua='_lua; and /usr/bin/lua5.3'
-alias lua53='_lua53; and /usr/bin/lua5.3'
-alias lua54='_lua54; and /usr/bin/lua5.4'
-alias lua51='_lua51; and /usr/bin/lua5.1'
+  alias lua='_lua; and /usr/bin/lua5.3'
+  alias lua53='_lua53; and /usr/bin/lua5.3'
+  alias lua54='_lua54; and /usr/bin/lua5.4'
+  alias lua51='_lua51; and /usr/bin/lua5.1'
+end
 
 _env-append-to-path $HOME/.local/share/lua-language-server/bin
 _env-append-to-path $HOME/.local/share/julia/bin
 _env-append-to-path $HOME/.yarn/bin
 _env-append-to-path $HOME/.cargo/bin
+_env-append-to-path /home/linuxbrew/.linuxbrew/bin
+_env-append-to-path /opt/riscv:/opt/riscv/bin
 
 _env-append-to-ldpath /usr/lib
 _env-append-to-ldpath /usr/lib/octave/8.4.0
+set -xg KALEIDOSCOPE_DIR $HOME/git/Kaleidoscope

@@ -6,11 +6,12 @@
 bind \b backward-kill-word
 set -g SSH_ENV $HOME/.ssh
 
-if test (uname -s) = 'Linux'; and test -f '/usr/bin/exa'
-  alias ls 'exa --icons --color=auto'
-  alias ll 'exa -lah --icons'
-  alias grep 'grep --color=auto'
-end
+source $HOME/.config/fish/functions/_env.fish
+# if type -q exa
+#   alias ls 'exa --icons --color=auto'
+#   alias ll 'exa -lah --icons'
+#   alias grep 'grep --color=auto'
+# end
 
 alias clc=clear
 if test -f /usr/bin/rlwrap
@@ -94,7 +95,6 @@ alias octave="octave -q"
 set --universal pure_symbol_prefix_root_prompt '󱈸󱈸'
 set --universal pure_symbol_git_dirty '   '
 
-source ~/.config/fish/functions/_env.fish
 _binds
 
 starship init fish | source

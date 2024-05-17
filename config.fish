@@ -90,6 +90,8 @@ alias rscript=Rscript
 alias vim=/usr/bin/nvim
 alias vi=/usr/bin/vim
 alias octave="octave -q"
+alias sbcl="rlwrap /usr/bin/sbcl"
+alias ngspice="rlwrap ngspice"
 
 ## pure-fish configuration
 set --universal pure_symbol_prefix_root_prompt '󱈸󱈸'

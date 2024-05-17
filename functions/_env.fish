@@ -18,13 +18,13 @@ set -xg PYTHONSTARTUP /home/tao/.config/pythonrc
 set -xg QT_QPA_PLATFORM wayland
 set -xg LUA_INIT "@$HOME/.config/rc.lua"
 set -xg TERM xterm-256color
-export QT_QPA_PLATFORM=wayland
+# export QT_QPA_PLATFORM=wayland
 
 _env-append-to-path $HOME/.luarocks/bin/
 
 set --global GTK_THEME "Adwaita:dark"
 
-if false
+if true
   alias _lua51='eval "$(luarocks --lua-version=5.1 path)"'
   alias _lua54='eval "$(luarocks --lua-version=5.4 path)"'
   alias _lua53='eval "$(luarocks --lua-version=5.3 path)"'
@@ -35,6 +35,8 @@ if false
   alias lua54='_lua54; and /usr/bin/lua5.4'
   alias lua51='_lua51; and /usr/bin/lua5.1'
 end
+
+alias maxima=rmaxima
 
 _env-append-to-path $HOME/.local/share/lua-language-server/bin
 _env-append-to-path $HOME/.local/share/julia/bin

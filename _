@@ -1,0 +1,56 @@
+import = [
+"~/.config/alacritty/themes/solarized_osaka.toml"
+]
+
+[colors.primary]
+background = '#000000'
+foreground = '#ffffff'
+
+[colors.cursor]
+text = '#020221'
+cursor = '#ffd392'
+
+
+# Bright colors
+[colors.bright]
+black   = '#020221'
+red     = '#ff8e78'
+green   = '#b1bf75'
+yellow  = '#ffd392'
+blue    = '#fffbfa'
+magenta = '#ffb07b'
+cyan    = '#8bccbf'
+white   = '#ffffff'
+
+[shell]
+program = "/usr/bin/fish"
+args = ["-c tmux"]
+
+[window]
+dimensions={columns=160,lines=44}
+padding = {x=5,y=5}
+opacity=1.0
+
+[scrolling]
+history=300
+multiplier=3
+
+[font]
+# normal = {family="HackGen Console NF", style="Regular"}
+# normal = {family="Hack Nerd Font", style="Regular"}
+# normal = {family="PlemolJP Console NF", style="Regular"}
+normal = {family="BlexMono Nerd Font", style="Regular"}
+size=14
+
+[cursor]
+style="Block"
+thickness=0.1
+
+[mouse]
+hide_when_typing=true
+
+[keyboard]
+bindings = [
+  #{key = "V", mods = "Control|Shift", action = "PasteSelection"},
+  #{key = "C", mods = "Control|Shift", action  = "CopySelection"},
+]

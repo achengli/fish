@@ -28,14 +28,11 @@ end
 
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.luarocks/bin/
-fish_add_path $HOME/.local/share/julia/bin
 fish_add_path $HOME/.yarn/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/share/nvim/mason/bin
 fish_add_path $HOME/.local/host-tools/gcc/riscv64-elf-x86_64/bin
-fish_add_path $HOME/.local/julia/bin
 fish_add_path /var/lib/flatpak/exports/bin
-fish_add_path $HOME/.julia/juliaup/julia-*/bin
 
 export LUA_PATH='/usr/share/lua/5.4/?.lua;/usr/share/lua/5.4/?/init.lua;/usr/lib64/lua/5.4/?.lua;/usr/lib64/lua/5.4/?/init.lua;./?.lua;./?/init.lua;/home/tao/.luarocks/share/lua/5.4/?.lua;/home/tao/.luarocks/share/lua/5.4/?/init.lua'
 
@@ -45,9 +42,8 @@ if test -d $HOME/node_modules
   fish_add_path $HOME/node_modules/**/bin/
 end
 
-set -g julia_env true
 if test -d $HOME/.juliaup
-  fish_add_path $HOME/juliaup/bin
+  fish_add_path $HOME/.juliaup/bin
 end
 
 if test -d $HOME/go

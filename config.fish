@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+
 # Fish configuration file
 # Copyright BY-NC (C) 2023-2024 Yassin Achengli <yassin_achengli@hotmail.com> 
 
@@ -8,23 +8,9 @@ bind \b backward-kill-word
 set -g SSH_ENV $HOME/.ssh
 source $HOME/.config/fish/functions/_env.fish
 
-# for me because I'm used to clc as it's the octave name to clear command
+# clc: console clear shortcut <<GNU Octave syntax>>
 function clc
   clear
-end
-
-# espressif esp32 toolchain
-if test -d ~/esp
-  function get_idf
-    $HOME/esp/esp-idf/export.fish
-  end
-end
-
-# rm but asking before
-function rms
-  if test (read -p 'are you sure to remove it? [y/N]') = 'y'
-    rm -rf $argv
-  end
 end
 
 # list battery capacity and status (charging or uncharching)
@@ -34,22 +20,7 @@ function battery
   echo "$bat_cap% - $bat_status"
 end
 
-# (will be removed). This snippet was used for specific purpose, remove executable 
-# files in current directory (not recursive)
-function rmx
-  if test "$argv[1]" = "--help"; or test $argv[1] = "-h"
-    printf "Remove executable files\n"
-  else
-    for file in * .*
-      if test -f "$file"; and\
-        test -n "(ls -l $file | grep -E rwx)"
-        rm $file
-      end
-    end
-  end 
-end
-
-# snipped used to be a unicode previewer
+# Show unicode expression in console.
 function u
   if test $argv[1] = "--help"; or test $argv[1] = '-h'
     echo -e "\e[1musage:\e[m u <hex code>"  
@@ -62,30 +33,19 @@ function u
   end
 end
 
-# snippet used to call help command to specified octave function
+# Get help message of an Octave function out of Octave session.
+# octave-help <your function>
 function octave-help
   octave --eval "help $argv"
 end
 
-# snippet used to extract decimal number expression from string
+# Get decimal number expression from raw string.
 function nums
   grep -Eo '([-+]?[0-9]*[\.[0-9]*]?)\.?' | xargs
 end
 
-# for 256 colors terminal (avoid to run tmux with tty == locked console)
-if test $TERM != 'xterm-256color'
-  if test -z "$TMUX"
-    for k in $(tmux ls | grep -v attached | grep -Eo "^[0-9]+" )
-      tmux kill-session -t $k
-    end
-    if test $TERM = "xterm-kitty"
-      set -g TMUX open
-      tmux new-session
-    end
-  end
-end
-
-# run alias fish function (see ./functions/__alias_fish.fish)
+# run alias fish function 
+# > see HOME/.config/fish/functions/__alias_fish.fish
 __alias_fish
 
 if test -n "/usr/bin/vim"
@@ -130,6 +90,9 @@ if test -n "/usr/bin/rlwrap"
   function maxima
     rmaxima $argv
   end
+  function sbcl
+    rlwrap /usr/bin/sbcl
+  end
 end
 
 # Py-venv activation
@@ -144,4 +107,6 @@ if test -f "$PWD/pyvenv.cfg"
   end
 end
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/tao/.ghcup/bin $PATH # ghcup-env
+set -q GHCUP_INSTALL_BASE_PREFIX[1]
+set GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx PATH $HOME/.cabal/bin /home/tao/.ghcup/bin $PATH # ghcup-env

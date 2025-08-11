@@ -1,6 +1,15 @@
+#         FISH SHELL CONFIG
+# ***********************************
+# Copyright BY-NC (C) 2023-2024 Yassin Achengli 
+#     <yassin_achengli@hotmail.com> 
+# +++++++++++++++++++++++++++++++++++
+#                O  o
+#           _\_   o
+# >('>   \\/  o\ .
+#        //\___=
+#           ''
+# +++++++++++++++++++++++++++++++++++
 
-# Fish configuration file
-# Copyright BY-NC (C) 2023-2024 Yassin Achengli <yassin_achengli@hotmail.com> 
 
 # Ctrl+backspace (kill word)
 bind \b backward-kill-word
@@ -48,9 +57,17 @@ end
 # > see HOME/.config/fish/functions/__alias_fish.fish
 __alias_fish
 
-if test -n "/usr/bin/vim"
+if not test -f "/usr/bin/vim"; and not test -f "/usr/bin/vimx"
   function vim
     nvim $argv
+  end
+
+  function vm
+    /usr/bin/vim $argv
+  end
+else
+  function vim
+    vimx $argv
   end
 end
 
@@ -67,13 +84,11 @@ if test $__show_fish_logo = true
 end
 
 function ll
-
   if test -e /usr/bin/exa; or test -e /usr/local/bin/exa
     exa -la $argv
   else
     ls -la $argv
   end
-
 end
 
 # default tmux call when fish is running on Blackbox terminal (for my Gnome env)
@@ -88,22 +103,10 @@ end
 
 if test -n "/usr/bin/rlwrap" 
   function maxima
-    rmaxima $argv
+    /usr/bin/rmaxima $argv
   end
   function sbcl
-    rlwrap /usr/bin/sbcl
-  end
-end
-
-# Py-venv activation
-# --
-# Will be activated (executing bin/activate.fish) only if authorize file matches the 
-# password.
-if test -f "$PWD/pyvenv.cfg"
-  if test -d $PWD/bin
-    if test "$(cat authorize | sha256sum | cut -d' ' -f1)" = "620f52288f6f37c3bbc8e2321e66e8c39c35c562d07180ebd278d6a6d1807f5b"
-      source bin/activate.fish
-    end
+    rlwrap /usr/bin/sbcl $argv
   end
 end
 

@@ -5,7 +5,6 @@ function fish_prompt
   # and a "#" instead of a "$" when run as root.
   set -l symbol ' $ '
   set -l color $fish_color_cwd
-  fish_auto_fish
 
   if fish_is_root_user
     set symbol ' # '

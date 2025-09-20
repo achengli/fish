@@ -1,4 +1,5 @@
 function fish_prompt
+<<<<<<< HEAD
         # This is a simple prompt. It looks like
         # alfa@nobby /path/to/dir $
         # with the path shortened and colored
@@ -19,4 +20,8 @@ function fish_prompt
         set_color normal
     
         echo -n $symbol
+=======
+  set_color -o green
+  printf  '%s@%s:%s%s%s$ ' $USER $hostname (prompt_pwd) (set_color normal)
+>>>>>>> 076d23a (fish shell without time prompt)
 end

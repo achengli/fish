@@ -52,18 +52,6 @@ if test $TERM != 'xterm-256color'
   end
 end
 
-<<<<<<< HEAD
-=======
-# run alias fish function (see ./functions/__alias_fish.fish)
-__alias_fish
-
-if ! test -e "/usr/bin/vim"
-  function vim
-    nvim $argv
-  end
-end
-
->>>>>>> 076d23a (fish shell without time prompt)
 _binds
 
 # hide default fish shell greeting popup
@@ -100,14 +88,12 @@ if test -n "/usr/bin/rlwrap"
   end
 end
 
-<<<<<<< HEAD
+set -g auto_hash "620f52288f6f37c3bbc8e2321e66e8c39c35c562d07180ebd278d6a6d1807f5b"
+
+function clsetup
+  $HOME/.vim/scripts/clangd_gen.sh $argv
+end
+
 set -q GHCUP_INSTALL_BASE_PREFIX[1]
 set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/tao/.ghcup/bin $PATH # ghcup-env
-=======
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/tao/.ghcup/bin $PATH # ghcup-env
-
-function clang_setup
-  $HOME/.vim/scripts/clangd_gen.sh $argv
-end
->>>>>>> 076d23a (fish shell without time prompt)

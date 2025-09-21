@@ -66,7 +66,7 @@ auto_shell(){
           break
         fi
       fi
-    done < $PWD/auto.fish
+    done < $PWD/auto.sh
   fi
 }
 
